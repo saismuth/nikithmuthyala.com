@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nikith Muthyala · VLSI Physical Design Engineer</title>
+<meta name="description" content="Portfolio of Sai Siva Nikith Muthyala — ASIC Physical Design Engineer specializing in RTL-to-GDSII, timing closure, and EDA automation."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════ TOKENS ═══════════════════════ */
+:root {
+  --bg:       #050810;
+  --bg2:      #070c16;
+  --surface:  rgba(255,255,255,0.034);
+  --surf2:    rgba(255,255,255,0.056);
+  --border:   rgba(255,255,255,0.075);
+  --bord-c:   rgba(0,200,255,0.25);
+  --cyan:     #00ccff;
+  --cyan2:    #00ffbd;
+  --cglow:    rgba(0,200,255,0.15);
+  --amber:    #f0a030;
+  --red:      #ff4d6d;
+  --text:     #d8eeff;
+  --muted:    rgba(170,205,240,0.55);
+  --muted2:   rgba(130,170,210,0.38);
+  --max:      1160px;
+  --ease:     cubic-bezier(0.16,1,0.3,1);
+  --fh:       'Syne', sans-serif;
+  --fb:       'DM Sans', sans-serif;
+  --fm:       'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ═══════════════════════ AMBIENT ═══════════════════════ */
+#ambient{position:fixed;inset:0;z-index:0;pointer-events:none}
+#ambient::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 55% at 90% -5%,  rgba(0,160,255,0.1)  0%,transparent 55%),
+    radial-gradient(ellipse 60% 45% at -5% 25%,  rgba(0,255,180,0.07) 0%,transparent 50%),
+    radial-gradient(ellipse 70% 40% at 50% 105%, rgba(0,80, 200,0.09) 0%,transparent 55%);
+}
+#ambient::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,180,255,0.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,180,255,0.018) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 85%);
+}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4}
+section,header,nav,footer{position:relative;z-index:1}
+.w{width:min(calc(100% - 48px),var(--max));margin:0 auto}
+
+/* ═══════════════════════ GLASS ═══════════════════════ */
+.glass{
+  background:var(--surface);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:20px;
+}
+
+/* ═══════════════════════ NAV ═══════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:12px 0;
+  background:rgba(5,8,16,0.65);
+  backdrop-filter:blur(28px) saturate(200%);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  transition:background .4s;
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-weight:700;font-size:16px;letter-spacing:-.02em}
+.logo-m{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(0,200,255,.18),rgba(0,255,189,.1));
+  border:1px solid var(--bord-c);
+  display:grid;place-items:center;
+  font-family:var(--fm);font-size:14px;color:var(--cyan);
+}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-btn{
+  padding:10px 20px;border-radius:999px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#02080f;font-size:13px;font-weight:700;
+  box-shadow:0 6px 24px rgba(0,200,255,.3);
+  transition:transform .2s,box-shadow .2s;
+  white-space:nowrap;
+}
+.nav-btn:hover{transform:translateY(-1px);box-shadow:0 10px 32px rgba(0,200,255,.42)}
+
+/* ═══════════════════════ HERO ═══════════════════════ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:100px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
+
+/* eyebrow */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(0,200,255,.07);border:1px solid rgba(0,200,255,.22);
+  font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:26px;
+  opacity:0;animation:up .7s .1s var(--ease) forwards;
+}
+.ebdot{
+  width:7px;height:7px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 10px var(--cyan);
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+.h1{
+  font-family:var(--fh);font-size:clamp(52px,8.5vw,104px);
+  font-weight:800;line-height:.92;letter-spacing:-.045em;
+  color:#e6f2ff;margin-bottom:22px;
+  opacity:0;animation:up .85s .28s var(--ease) forwards;
+}
+.h1 .grad{
+  display:block;
+  background:linear-gradient(130deg,var(--cyan) 10%,var(--cyan2) 90%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(15px,1.8vw,18px);color:var(--muted);
+  max-width:500px;font-weight:300;line-height:1.8;margin-bottom:32px;
+  opacity:0;animation:up .85s .44s var(--ease) forwards;
+}
+.hero-sub strong{color:var(--text);font-weight:500}
+.tag-row{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;
+  opacity:0;animation:up .85s .58s var(--ease) forwards;
+}
+.tag{
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.06em;
+  color:rgba(0,210,255,.75);border:1px solid rgba(0,200,255,.18);
+  background:rgba(0,200,255,.05);padding:5px 12px;border-radius:6px;
+  transition:all .2s;cursor:default;
+}
+.tag:hover{background:rgba(0,200,255,.12);border-color:rgba(0,200,255,.4);color:var(--cyan)}
+.hero-btns{
+  display:flex;gap:12px;flex-wrap:wrap;
+  opacity:0;animation:up .85s .7s var(--ease) forwards;
+}
+.btn-solid{
+  padding:14px 28px;border-radius:14px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#02080f;font-weight:700;font-size:14px;
+  box-shadow:0 8px 28px rgba(0,200,255,.3);
+  transition:transform .2s,box-shadow .2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,200,255,.45)}
+.btn-ghost{
+  padding:13px 28px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text);font-weight:600;font-size:14px;
+  transition:all .2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-ghost:hover{background:var(--surf2);border-color:rgba(255,255,255,.14);transform:translateY(-2px)}
+
+/* HERO VISUAL */
+.hero-visual{opacity:0;animation:fadein 1s .9s var(--ease) forwards}
+.hv-wrap{
+  position:relative;border-radius:28px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.07);
+  background:linear-gradient(160deg,rgba(0,18,40,.92),rgba(2,8,20,.96));
+  box-shadow:0 48px 96px rgba(0,0,0,.6),0 0 80px rgba(0,160,255,.05) inset;
+  min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+#chip{position:absolute;inset:0;width:100%;height:100%}
+
+.hv-badge{
+  position:relative;z-index:2;margin:20px;
+  background:rgba(4,10,22,.8);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:20px 22px;
+}
+.hv-b-tag{font-family:var(--fm);font-size:10px;letter-spacing:.16em;color:var(--cyan);text-transform:uppercase;margin-bottom:5px}
+.hv-b-title{font-family:var(--fh);font-size:15px;font-weight:700;color:#e4f0ff;margin-bottom:3px}
+.hv-b-sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+.hv-b-metrics{display:flex;gap:22px;padding-top:13px;border-top:1px solid rgba(255,255,255,.07)}
+.hv-m-val{font-family:var(--fh);font-size:20px;font-weight:800;color:var(--cyan);line-height:1}
+.hv-m-lbl{font-size:10px;color:var(--muted2);margin-top:3px;font-family:var(--fm)}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px;
+  opacity:0;animation:up .8s 1.1s var(--ease) forwards;
+}
+.stat{
+  padding:20px 20px;border-radius:16px;
+  background:var(--surface);border:1px solid var(--border);
+  text-align:center;transition:all .25s;cursor:default;
+}
+.stat:hover{background:var(--surf2);border-color:rgba(0,200,255,.2);transform:translateY(-3px)}
+.sv{font-family:var(--fh);font-size:28px;font-weight:800;color:var(--cyan);line-height:1;margin-bottom:5px}
+.sl{font-size:12px;color:var(--muted);font-weight:400}
+
+/* ═══════════════════════ SECTIONS ═══════════════════════ */
+.sec{padding:110px 0}
+.sec-alt{background:rgba(0,12,28,.5);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-tag{
+  font-family:var(--fm);font-size:11px;letter-spacing:.18em;color:var(--cyan);
+  text-transform:uppercase;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-tag::after{content:'';width:28px;height:1px;background:var(--bord-c)}
+.sec-h{
+  font-family:var(--fh);font-size:clamp(30px,4.5vw,52px);
+  font-weight:800;line-height:1;letter-spacing:-.035em;
+  color:#e0eeff;margin-bottom:14px;
+}
+.sec-p{font-size:15.5px;color:var(--muted);max-width:580px;font-weight:300;line-height:1.8;margin-bottom:56px}
+
+/* ═══════════════════════ SKILLS ═══════════════════════ */
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+.sk-card{padding:30px 32px}
+.sk-card-h{
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;
+  color:var(--amber);text-transform:uppercase;margin-bottom:24px;
+  padding-bottom:11px;border-bottom:1px solid rgba(240,160,48,.18);
+}
+.sk-row{margin-bottom:17px}
+.sk-top{display:flex;justify-content:space-between;margin-bottom:8px}
+.sk-n{font-size:13.5px;font-weight:500;color:var(--text)}
+.sk-pc{font-family:var(--fm);font-size:11.5px;color:var(--cyan)}
+.sk-track{height:4px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}
+.sk-fill{
+  height:100%;border-radius:999px;width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--cyan2));
+  box-shadow:0 0 14px rgba(0,200,255,.35);
+  transition:width 1.5s var(--ease);
+}
+.tools-h{
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;
+  color:var(--amber);text-transform:uppercase;
+  margin-bottom:16px;padding-bottom:11px;
+  border-bottom:1px solid rgba(240,160,48,.18);
+}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:9px}
+.tool{
+  font-family:var(--fm);font-size:10.5px;letter-spacing:.04em;
+  color:var(--muted);border:1px solid var(--border);
+  background:var(--surface);padding:10px 12px;
+  border-radius:10px;text-align:center;
+  transition:all .2s;cursor:default;
+}
+.tool:hover{border-color:rgba(0,200,255,.35);color:var(--cyan);background:var(--cglow)}
+
+/* ═══════════════════════ EXPERIENCE ═══════════════════════ */
+.tl{display:flex;flex-direction:column;gap:20px}
+.tl-card{
+  padding:30px 34px;border-radius:22px;
+  position:relative;overflow:hidden;transition:all .3s;cursor:default;
+}
+.tl-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--cyan),transparent);
+  border-radius:0 3px 3px 0;opacity:0;transition:opacity .3s;
+}
+.tl-card:hover{transform:translateX(5px);border-color:rgba(0,200,255,.22)}
+.tl-card:hover::before{opacity:1}
+.tl-period{font-family:var(--fm);font-size:10.5px;color:var(--cyan);letter-spacing:.1em;margin-bottom:7px}
+.tl-role{font-family:var(--fh);font-size:19px;font-weight:700;color:#e2efff;margin-bottom:3px}
+.tl-co{font-size:13px;color:var(--muted);margin-bottom:18px}
+.tl-li{display:flex;flex-direction:column;gap:7px}
+.tl-li li{
+  font-size:13.5px;color:rgba(175,208,242,.72);
+  padding-left:17px;position:relative;line-height:1.6;
+}
+.tl-li li::before{content:'›';position:absolute;left:0;color:var(--cyan);font-size:14px;line-height:1.55}
+.tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tl-tag{
+  font-family:var(--fm);font-size:10px;color:var(--amber);
+  border:1px solid rgba(240,160,48,.24);background:rgba(240,160,48,.06);
+  padding:4px 10px;border-radius:6px;letter-spacing:.05em;
+}
+
+/* ═══════════════════════ PROJECTS ═══════════════════════ */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.proj{
+  border-radius:22px;overflow:hidden;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.024);
+  transition:all .38s var(--ease);
+  cursor:default;display:flex;flex-direction:column;
+}
+.proj:hover{
+  border-color:rgba(0,200,255,.32);
+  transform:translateY(-8px);
+  box-shadow:0 40px 80px rgba(0,0,0,.45),0 0 50px rgba(0,200,255,.07);
+}
+.proj-img-wrap{
+  position:relative;overflow:hidden;
+  aspect-ratio:16/8.5;
+}
+.proj-img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.68) saturate(.7);
+  transition:filter .45s,transform .45s;
+}
+.proj:hover .proj-img{filter:brightness(.82) saturate(.95);transform:scale(1.04)}
+.proj-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(5,8,16,.92) 100%);
+}
+.proj-node{
+  position:absolute;top:14px;left:16px;
+  font-family:var(--fm);font-size:10px;letter-spacing:.14em;
+  color:var(--cyan);background:rgba(4,10,22,.78);
+  backdrop-filter:blur(8px);border:1px solid rgba(0,200,255,.22);
+  padding:5px 11px;border-radius:6px;text-transform:uppercase;
+}
+.proj-body{padding:22px 26px 26px;flex:1;display:flex;flex-direction:column}
+.proj-title{font-family:var(--fh);font-size:17px;font-weight:700;color:#deeeff;margin-bottom:9px}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:16px}
+.proj-kpi{
+  font-family:var(--fm);font-size:11px;letter-spacing:.04em;
+  color:var(--cyan2);border:1px solid rgba(0,255,189,.2);
+  background:rgba(0,255,189,.05);padding:8px 13px;border-radius:8px;
+}
+
+/* ═══════════════════════ EDUCATION ═══════════════════════ */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.edu-card{
+  padding:32px 34px;border-radius:22px;
+  position:relative;overflow:hidden;
+  transition:all .3s;cursor:default;
+}
+.edu-card:hover{border-color:rgba(0,200,255,.22);transform:translateY(-4px)}
+.edu-card::after{
+  content:'';position:absolute;bottom:-40px;right:-40px;
+  width:140px;height:140px;
+  background:radial-gradient(circle,rgba(0,200,255,.07),transparent 70%);
+  pointer-events:none;
+}
+.edu-deg{font-family:var(--fh);font-size:18px;font-weight:700;color:#e4f0ff;line-height:1.3;margin-bottom:8px}
+.edu-uni{font-size:14px;color:var(--cyan);font-weight:500;margin-bottom:7px}
+.edu-yr{font-family:var(--fm);font-size:11px;color:var(--muted2);letter-spacing:.08em}
+
+/* ═══════════════════════ CONTACT ═══════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+
+/* Left info */
+.contact-blurb{font-size:15.5px;color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:32px}
+.clinks{display:flex;flex-direction:column;gap:11px}
+.clink{
+  display:flex;align-items:center;gap:14px;
+  padding:15px 18px;border-radius:14px;
+  border:1px solid var(--border);background:var(--surface);
+  color:var(--text);font-size:14px;font-weight:500;
+  transition:all .25s;
+}
+.clink[href]:hover{
+  border-color:rgba(0,200,255,.32);background:var(--cglow);
+  color:var(--cyan);transform:translateX(5px);
+}
+.ci{
+  width:40px;height:40px;border-radius:11px;
+  border:1px solid var(--border);background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;transition:background .2s;
+}
+.clink[href]:hover .ci{background:rgba(0,200,255,.1)}
+.ci-info{}
+.ci-lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;margin-bottom:2px}
+.ci-val{font-size:14px}
+
+/* Right form */
+.contact-right{display:flex;flex-direction:column;gap:18px}
+
+/* Availability badge */
+.avail{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;border-radius:18px;
+  background:linear-gradient(130deg,rgba(0,200,255,.07),rgba(0,255,189,.04));
+  border:1px solid rgba(0,200,255,.22);
+}
+.avail-dot{
+  width:13px;height:13px;border-radius:50%;
+  background:#00ffaa;flex-shrink:0;
+  box-shadow:0 0 0 0 rgba(0,255,170,.5);
+  animation:sonar 2.2s infinite;
+}
+@keyframes sonar{
+  0%  {box-shadow:0 0 0 0   rgba(0,255,170,.55)}
+  70% {box-shadow:0 0 0 14px rgba(0,255,170,0)}
+  100%{box-shadow:0 0 0 0   rgba(0,255,170,0)}
+}
+.avail strong{display:block;font-size:15px;font-weight:600;color:#00ffaa;margin-bottom:2px}
+.avail span{font-size:13px;color:var(--muted)}
+
+/* Form card */
+.form-card{padding:28px 30px;border-radius:20px}
+.field{margin-bottom:13px}
+.field label{
+  display:block;font-family:var(--fm);font-size:9.5px;
+  letter-spacing:.14em;color:var(--muted2);text-transform:uppercase;margin-bottom:6px;
+}
+.field input,.field textarea{
+  width:100%;background:rgba(0,0,0,.32);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-family:var(--fb);font-size:14px;
+  padding:12px 14px;outline:none;transition:border-color .2s,background .2s;
+  resize:vertical;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted2)}
+.field input:focus,.field textarea:focus{
+  border-color:rgba(0,200,255,.45);background:rgba(0,200,255,.04);
+}
+.field.half-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.field.half-row .sub-f{}
+.field.half-row .sub-f label{
+  display:block;font-family:var(--fm);font-size:9.5px;
+  letter-spacing:.14em;color:var(--muted2);text-transform:uppercase;margin-bottom:6px;
+}
+.field.half-row .sub-f input{
+  width:100%;background:rgba(0,0,0,.32);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-family:var(--fb);font-size:14px;
+  padding:12px 14px;outline:none;transition:border-color .2s,background .2s;
+}
+.field.half-row .sub-f input::placeholder{color:var(--muted2)}
+.field.half-row .sub-f input:focus{border-color:rgba(0,200,255,.45);background:rgba(0,200,255,.04)}
+
+#send-btn{
+  width:100%;padding:14px;border-radius:12px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#02080f;font-weight:700;font-size:14.5px;
+  border:none;cursor:pointer;letter-spacing:.02em;
+  transition:transform .2s,box-shadow .2s;
+  margin-top:4px;
+  box-shadow:0 8px 26px rgba(0,200,255,.3);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+#send-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,200,255,.45)}
+#send-btn:active{transform:translateY(0)}
+#send-btn svg{width:16px;height:16px;fill:none;stroke:#02080f;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Feedback states */
+.form-msg{
+  display:none;padding:13px 16px;border-radius:11px;
+  font-size:14px;font-weight:500;text-align:center;margin-top:10px;
+}
+.form-msg.ok{background:rgba(0,255,170,.08);border:1px solid rgba(0,255,170,.25);color:#00ffaa}
+.form-msg.err{background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.25);color:var(--red)}
+
+/* Copy email pill */
+.copy-email{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:14px;padding:10px 16px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface);
+  font-family:var(--fm);font-size:11.5px;color:var(--muted);
+  cursor:pointer;transition:all .2s;width:100%;justify-content:center;
+}
+.copy-email:hover{border-color:rgba(0,200,255,.3);color:var(--cyan);background:var(--cglow)}
+.copy-email svg{width:14px;height:14px;flex-shrink:0}
+#copy-confirm{font-size:11px;color:var(--cyan2);display:none;text-align:center;margin-top:6px;font-family:var(--fm)}
+
+/* ═══════════════════════ FOOTER ═══════════════════════ */
+footer{
+  border-top:1px solid var(--border);
+  padding:28px 0;text-align:center;
+  font-family:var(--fm);font-size:11px;color:var(--muted2);letter-spacing:.07em;
+}
+footer span{color:var(--cyan)}
+
+/* ═══════════════════════ SCROLL REVEAL ═══════════════════════ */
+.r{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.r.v{opacity:1;transform:translateY(0)}
+.r2{opacity:0;transform:translateY(26px);transition:opacity .75s .1s var(--ease),transform .75s .1s var(--ease)}
+.r2.v{opacity:1;transform:translateY(0)}
+.r3{opacity:0;transform:translateY(26px);transition:opacity .75s .2s var(--ease),transform .75s .2s var(--ease)}
+.r3.v{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════ KEYFRAMES ═══════════════════════ */
+@keyframes up    {from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* ═══════════════════════ RESPONSIVE ═══════════════════════ */
+@media(max-width:860px){
+  .nav-links{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .sk-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .sec{padding:80px 0}
+}
+</style>
+</head>
+<body>
+
+<div id="ambient"></div>
+<canvas id="particles"></canvas>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <div class="w nav-in">
+    <div class="logo">
+      <div class="logo-m">N</div>
+      Nikith Muthyala
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:mssn2024@gmail.com" class="nav-btn">Hire Me →</a>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="about">
+<div class="w">
+  <div class="hero-grid">
+    <!-- Copy -->
+    <div>
+      <div class="eyebrow"><span class="ebdot"></span>Open to Work · Entry & Mid-Level PD Roles</div>
+      <h1 class="h1">Sai Nikith<br><span class="grad">Muthyala</span></h1>
+      <p class="hero-sub"><strong>VLSI Physical Design Engineer</strong> with 4+ years executing block-level RTL-to-GDSII flows, timing closure, and ASIC backend implementation across 7nm–28nm technology nodes.</p>
+      <div class="tag-row">
+        <span class="tag">RTL-to-GDSII</span>
+        <span class="tag">Fusion Compiler</span>
+        <span class="tag">Cadence Innovus</span>
+        <span class="tag">PrimeTime STA</span>
+        <span class="tag">TCL Automation</span>
+        <span class="tag">CTS · Routing · ECO</span>
+        <span class="tag">7nm · 14nm · 28nm</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-solid">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#02080f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+        <a href="https://linkedin.com/in/nikith-muthyala" target="_blank" class="btn-ghost">
+          LinkedIn ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Visual -->
+    <div class="hero-visual">
+      <div class="hv-wrap">
+        <canvas id="chip"></canvas>
+        <div class="hv-badge">
+          <div class="hv-b-tag">Currently Active</div>
+          <div class="hv-b-title">32-bit RISC Core · TSMC 14nm</div>
+          <div class="hv-b-sub">Block Physical Design · Targeting 434 MHz</div>
+          <div class="hv-b-metrics">
+            <div><div class="hv-m-val">40</div><div class="hv-m-lbl">Hard Macros</div></div>
+            <div><div class="hv-m-val">−2%</div><div class="hv-m-lbl">Congestion</div></div>
+            <div><div class="hv-m-val">14nm</div><div class="hv-m-lbl">TSMC Node</div></div>
+            <div><div class="hv-m-val">434</div><div class="hv-m-lbl">Target MHz</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats">
+    <div class="stat r"><div class="sv">4+</div><div class="sl">Years Experience</div></div>
+    <div class="stat r2"><div class="sv">7nm</div><div class="sl">Smallest Node</div></div>
+    <div class="stat r3"><div class="sv">3</div><div class="sl">EDA Platforms</div></div>
+    <div class="stat r" style="transition-delay:.3s"><div class="sv">M.S.</div><div class="sl">EE · VLSI · UMKC</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="sec sec-alt" id="skills">
+<div class="w">
+  <div class="r"><div class="sec-tag">Core Competencies</div><h2 class="sec-h">Skills & Toolchain</h2>
+  <p class="sec-p">Full-stack ASIC backend proficiency from synthesis handoff to tape-out readiness, backed by hands-on EDA tool experience across production and research environments.</p></div>
+
+  <div class="sk-grid">
+    <div class="glass sk-card r">
+      <div class="sk-card-h">Physical Design</div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Floorplanning & Placement</span><span class="sk-pc">90%</span></div><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Clock Tree Synthesis (CTS)</span><span class="sk-pc">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Static Timing Analysis (STA)</span><span class="sk-pc">88%</span></div><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Routing & Congestion Analysis</span><span class="sk-pc">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">ECO Implementation</span><span class="sk-pc">80%</span></div><div class="sk-track"><div class="sk-fill" data-w="80"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Low-Power Design (UPF)</span><span class="sk-pc">75%</span></div><div class="sk-track"><div class="sk-fill" data-w="75"></div></div></div>
+    </div>
+    <div class="glass sk-card r2">
+      <div class="sk-card-h">Scripting & Frontend Awareness</div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">TCL — EDA Automation</span><span class="sk-pc">88%</span></div><div class="sk-track"><div class="sk-fill" data-w="88"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Python / Shell Scripting</span><span class="sk-pc">75%</span></div><div class="sk-track"><div class="sk-fill" data-w="75"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Verilog / SystemVerilog</span><span class="sk-pc">70%</span></div><div class="sk-track"><div class="sk-fill" data-w="70"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">LEC / Gate-Level Debug</span><span class="sk-pc">72%</span></div><div class="sk-track"><div class="sk-fill" data-w="72"></div></div></div>
+      <div class="sk-row"><div class="sk-top"><span class="sk-n">Linux / Git / Log Analysis</span><span class="sk-pc">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+    </div>
+  </div>
+
+  <div class="r2">
+    <div class="tools-h">EDA Tools & Process Nodes</div>
+    <div class="tools">
+      <div class="tool">Fusion Compiler</div><div class="tool">ICC Compiler</div>
+      <div class="tool">Design Compiler</div><div class="tool">PrimeTime</div>
+      <div class="tool">Cadence Innovus</div><div class="tool">Tempus</div>
+      <div class="tool">VCS / Verdi</div><div class="tool">Calibre DRC</div>
+      <div class="tool">TSMC 14nm</div><div class="tool">TSMC 28nm</div>
+      <div class="tool">7nm Flow</div><div class="tool">16nm PDK</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section class="sec" id="experience">
+<div class="w">
+  <div class="r"><div class="sec-tag">Work History</div><h2 class="sec-h">Professional Experience</h2>
+  <p class="sec-p">A hands-on track record across production ASIC backend, research implementation, and industry-aligned training in leading EDA environments.</p></div>
+
+  <div class="tl">
+    <div class="glass tl-card r">
+      <div class="tl-period">DEC 2025 – PRESENT</div>
+      <div class="tl-role">Block-Level Physical Design Engineer</div>
+      <div class="tl-co">VLSI Guru · Industry-Oriented Training</div>
+      <ul class="tl-li">
+        <li>Executing block-level physical design of a 32-bit RISC core at TSMC 14nm targeting 434 MHz, following a production-style RTL-to-GDSII backend flow.</li>
+        <li>Completed full design setup and floorplanning integrating gate-level netlist, standard-cell libraries, SDC constraints, and technology files.</li>
+        <li>Executed congestion-aware macro placement for 40 hard macros with endcap and tap cell insertion.</li>
+        <li>Achieved 2% reduction in early-stage congestion hotspots through improved floorplan quality.</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">TSMC 14nm</span><span class="tl-tag">32-bit RISC</span><span class="tl-tag">434 MHz</span><span class="tl-tag">Fusion Compiler</span></div>
+    </div>
+
+    <div class="glass tl-card r">
+      <div class="tl-period">MAR 2024 – DEC 2025</div>
+      <div class="tl-role">Research — 28nm mIPU Memory Block</div>
+      <div class="tl-co">University of Missouri – Kansas City</div>
+      <ul class="tl-li">
+        <li>Executed ASIC research on a 28nm messaging-based mIPU memory block designed for AI acceleration, focusing on backend performance.</li>
+        <li>Performed RTL synthesis, post-synthesis analysis, and constraint validation ensuring physical implementability.</li>
+        <li>Conducted timing, area, and power trade-off analysis leveraging architectural understanding of the mIPU subsystem.</li>
+        <li>Applied targeted optimizations achieving an 8% improvement in overall design efficiency.</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">28nm</span><span class="tl-tag">AI Acceleration</span><span class="tl-tag">Synthesis</span><span class="tl-tag">PPA Analysis</span></div>
+    </div>
+
+    <div class="glass tl-card r">
+      <div class="tl-period">JUL 2022 – SEP 2023</div>
+      <div class="tl-role">Associate & Semiconductor Engineer</div>
+      <div class="tl-co">Capgemini Technology Services Limited</div>
+      <ul class="tl-li">
+        <li>Executed end-to-end ASIC physical design flow for a 7nm block covering floorplanning, placement, CTS, and routing in a production backend environment.</li>
+        <li>Performed timing, power, and layout-quality analysis using ICC Compiler and PrimeTime across multiple implementation stages.</li>
+        <li>Supported block-level PNR progression, iterative refinement, and sign-off readiness checks for design convergence.</li>
+        <li>Reduced routing congestion by 3% through improved floorplan and constraint quality.</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">7nm</span><span class="tl-tag">ICC Compiler</span><span class="tl-tag">PrimeTime</span><span class="tl-tag">Production PD</span></div>
+    </div>
+
+    <div class="glass tl-card r">
+      <div class="tl-period">JUL 2022 – NOV 2022</div>
+      <div class="tl-role">Physical Design Trainee</div>
+      <div class="tl-co">ChipEdge Technologies Pvt Ltd</div>
+      <ul class="tl-li">
+        <li>Executed block-level ASIC PD for a 28nm JBI block focusing on routability and layout quality.</li>
+        <li>Resolved setup and hold timing violations and cleaned base and metal DRCs using Calibre.</li>
+        <li>Achieved 4% routing congestion reduction and 5% improvement in thermal balance.</li>
+      </ul>
+      <div class="tl-tags"><span class="tl-tag">28nm</span><span class="tl-tag">Calibre DRC</span><span class="tl-tag">Timing Closure</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section class="sec sec-alt" id="projects">
+<div class="w">
+  <div class="r"><div class="sec-tag">Selected Work</div><h2 class="sec-h">Key Projects</h2>
+  <p class="sec-p">Representative ASIC backend projects showing implementation quality, timing awareness, and measurable optimization results across multiple process nodes.</p></div>
+
+  <div class="proj-grid">
+    <!-- Project 1: RISC Core chip image -->
+    <article class="proj r">
+      <div class="proj-img-wrap">
+        <img class="proj-img"
+          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+          alt="Silicon chip circuit board closeup" loading="lazy">
+        <div class="proj-img-overlay"></div>
+        <div class="proj-node">Project 01 · TSMC 14nm</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">32-bit RISC Core — Block Physical Design</div>
+        <p class="proj-desc">Production-style RTL-to-GDSII flow for a 32-bit RISC core at TSMC 14nm. Full design setup, floorplanning with 40 hard macros, congestion-aware macro placement, and endcap/tap insertion targeting 434 MHz closure.</p>
+        <div class="proj-kpi">↓ −2% early congestion hotspots at floorplan stage</div>
+      </div>
+    </article>
+
+    <!-- Project 2: AI/memory — wafer fab image -->
+    <article class="proj r2">
+      <div class="proj-img-wrap">
+        <img class="proj-img"
+          src="https://images.unsplash.com/photo-1601132359864-c974e79890ac?auto=format&fit=crop&w=900&q=80"
+          alt="Silicon wafer semiconductor fabrication" loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=900&q=80'">
+        <div class="proj-img-overlay"></div>
+        <div class="proj-node">Project 02 · 28nm · AI</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">mIPU Memory Block — AI Accelerator</div>
+        <p class="proj-desc">ASIC research on a 28nm messaging-based mIPU memory block for AI acceleration. RTL synthesis, post-synthesis constraint validation, and timing/area/power trade-off analysis for backend feasibility.</p>
+        <div class="proj-kpi">↑ +8% overall design efficiency improvement</div>
+      </div>
+    </article>
+
+    <!-- Project 3: 7nm ASIC — PCB/IC macro -->
+    <article class="proj r">
+      <div class="proj-img-wrap">
+        <img class="proj-img"
+          src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80"
+          alt="Microprocessor chip semiconductor" loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1555617981-dac3772e4783?auto=format&fit=crop&w=900&q=80'">
+        <div class="proj-img-overlay"></div>
+        <div class="proj-node">Project 03 · 7nm · Capgemini</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">7nm ASIC Block — Full Physical Design Flow</div>
+        <p class="proj-desc">End-to-end PD execution for a 7nm production block at Capgemini. Covered floorplanning through routing, sign-off readiness, and cross-functional collaboration with synthesis and frontend teams.</p>
+        <div class="proj-kpi">↓ −3% routing congestion after floorplan optimization</div>
+      </div>
+    </article>
+
+    <!-- Project 4: JBI DRC — cleanroom/wafer image -->
+    <article class="proj r2">
+      <div class="proj-img-wrap">
+        <img class="proj-img"
+          src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80"
+          alt="Semiconductor chip manufacturing cleanroom" loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80'">
+        <div class="proj-img-overlay"></div>
+        <div class="proj-node">Project 04 · 28nm · ChipEdge</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">28nm JBI Block — DRC & Timing Cleanup</div>
+        <p class="proj-desc">Block-level implementation for a 28nm JBI block at ChipEdge. Congestion resolution, setup/hold violation fixes, base and metal DRC cleanup with Calibre, and sign-off readiness validation.</p>
+        <div class="proj-kpi">↓ −4% congestion · ↑ +5% thermal balance improvement</div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ EDUCATION ══════════ -->
+<section class="sec" id="education">
+<div class="w">
+  <div class="r"><div class="sec-tag">Academic Background</div><h2 class="sec-h">Education</h2>
+  <p class="sec-p">Strong academic foundation in VLSI design and electronics engineering underpinning my ASIC backend implementation expertise.</p></div>
+  <div class="edu-grid">
+    <div class="glass edu-card r">
+      <div class="edu-deg">M.S. Electrical Engineering<br>— VLSI Design</div>
+      <div class="edu-uni">University of Missouri – Kansas City</div>
+      <div class="edu-yr">Jan 2024 – Dec 2025</div>
+    </div>
+    <div class="glass edu-card r2">
+      <div class="edu-deg">B.Tech Electronics &<br>Communication Engineering</div>
+      <div class="edu-uni">Gandhi Institute of Technology and Management</div>
+      <div class="edu-yr">Jun 2018 – Jul 2022</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="sec sec-alt" id="contact">
+<div class="w">
+  <div class="r"><div class="sec-tag">Get In Touch</div><h2 class="sec-h">Let's Connect</h2>
+  <p class="sec-p">Actively looking for Physical Design Engineer roles — entry and mid-level. If you have an opportunity or want to talk VLSI, reach out directly.</p></div>
+
+  <div class="contact-grid">
+    <!-- Left: contact info -->
+    <div class="r">
+      <p class="contact-blurb">I bring hands-on experience across 7nm–28nm backend flows, strong EDA tool proficiency, and a track record of measurable results. Open to opportunities in Michigan and willing to relocate.</p>
+      <div class="clinks">
+        <a class="clink" href="mailto:mssn2024@gmail.com">
+          <div class="ci">✉️</div>
+          <div class="ci-info"><div class="ci-lbl">Email</div><div class="ci-val">mssn2024@gmail.com</div></div>
+        </a>
+        <a class="clink" href="tel:+12488842966">
+          <div class="ci">📞</div>
+          <div class="ci-info"><div class="ci-lbl">Phone</div><div class="ci-val">+1 (248) 884-2966</div></div>
+        </a>
+        <a class="clink" href="https://linkedin.com/in/nikith-muthyala" target="_blank" rel="noreferrer">
+          <div class="ci">💼</div>
+          <div class="ci-info"><div class="ci-lbl">LinkedIn</div><div class="ci-val">linkedin.com/in/nikith-muthyala</div></div>
+        </a>
+        <div class="clink" style="cursor:default">
+          <div class="ci">📍</div>
+          <div class="ci-info"><div class="ci-lbl">Location</div><div class="ci-val">Novi, MI · Open to Relocation</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-right r2">
+      <!-- Availability -->
+      <div class="avail">
+        <div class="avail-dot"></div>
+        <div>
+          <strong>Available for Full-Time Roles</strong>
+          <span>Entry-level &amp; Mid-level Physical Design Engineer positions</span>
+        </div>
+      </div>
+
+      <!-- Message form -->
+      <div class="glass form-card">
+        <div class="field half-row">
+          <div class="sub-f"><label>Your Name *</label><input type="text" id="f-name" placeholder="Jane Smith" autocomplete="name"></div>
+          <div class="sub-f"><label>Company</label><input type="text" id="f-co" placeholder="Acme Semiconductor"></div>
+        </div>
+        <div class="field">
+          <label>Your Email (optional — so I can reply directly)</label>
+          <input type="email" id="f-email" placeholder="jane@company.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label>Message *</label>
+          <textarea id="f-msg" rows="4" placeholder="Tell me about the opportunity or just say hello..."></textarea>
+        </div>
+
+        <button id="send-btn" onclick="sendMsg()">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+
+        <div class="form-msg ok" id="msg-ok">
+          ✓ Your email client is opening with the message pre-filled — just hit send!
+        </div>
+        <div class="form-msg err" id="msg-err">
+          ⚠ Please enter your name and a message before sending.
+        </div>
+
+        <!-- Copy email fallback -->
+        <button class="copy-email" onclick="copyEmail()" title="Copy email address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy email address: mssn2024@gmail.com
+        </button>
+        <div id="copy-confirm">✓ Email copied to clipboard!</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="w">
+    Built for <span>Sai Siva Nikith Muthyala</span> · VLSI Physical Design Engineer · Novi, MI · 2025
+  </div>
+</footer>
+
+<script>
+/* ──────────────────────────────
+   PARTICLE BACKGROUND
+────────────────────────────── */
+(function(){
+  const c = document.getElementById('particles');
+  const ctx = c.getContext('2d');
+  let W,H,nodes=[];
+
+  function resize(){
+    W=c.width=window.innerWidth;
+    H=c.height=window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize',()=>{resize();init()});
+
+  function init(){
+    nodes=[];
+    const N=Math.min(55,Math.floor(W*H/18000));
+    for(let i=0;i<N;i++) nodes.push({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      r:Math.random()*1.4+.6
+    });
+  }
+  init();
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<nodes.length;i++){
+      const a=nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b=nodes[j];
+        const dx=b.x-a.x, dy=b.y-a.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<210){
+          const al=(1-d/210)*0.38;
+          ctx.strokeStyle=`rgba(0,175,255,${al})`;
+          ctx.lineWidth=.7;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          const mx=a.x+dx/2;
+          ctx.lineTo(mx,a.y);
+          ctx.lineTo(mx,b.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(0,190,255,.65)';
+      ctx.beginPath();
+      ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+      ctx.fill();
+      a.x+=a.vx; a.y+=a.vy;
+      if(a.x<0||a.x>W) a.vx*=-1;
+      if(a.y<0||a.y>H) a.vy*=-1;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ──────────────────────────────
+   ANIMATED CHIP DIE (HERO)
+────────────────────────────── */
+(function(){
+  const c=document.getElementById('chip');
+  if(!c) return;
+  const ctx=c.getContext('2d');
+  let t=0;
+
+  function size(){
+    const p=c.parentElement;
+    c.width=p.clientWidth; c.height=p.clientHeight;
+  }
+  size();
+  window.addEventListener('resize',size);
+
+  const BLOCKS=[
+    {x:.06,y:.05,w:.30,h:.24,label:'RISC CORE',accent:true},
+    {x:.39,y:.05,w:.20,h:.14,label:'L1 I-CACHE'},
+    {x:.62,y:.05,w:.18,h:.14,label:'L1 D-CACHE'},
+    {x:.83,y:.05,w:.12,h:.35,label:'I/O PAD'},
+    {x:.06,y:.32,w:.16,h:.18,label:'ALU'},
+    {x:.25,y:.32,w:.16,h:.18,label:'FPU'},
+    {x:.39,y:.22,w:.41,h:.11,label:'AXI INTERCONNECT'},
+    {x:.06,y:.53,w:.74,h:.06,label:'POWER DISTRIBUTION NETWORK (VDD / VSS)'},
+    {x:.06,y:.62,w:.35,h:.16,label:'MEM CONTROLLER'},
+    {x:.44,y:.62,w:.36,h:.16,label:'DMA ENGINE'},
+    {x:.06,y:.81,w:.74,h:.11,label:'CLOCK DISTRIBUTION — CTS NETWORK'},
+  ];
+
+  const TRACES=[
+    {x1:.36,y1:.17,x2:.39,y2:.12},
+    {x1:.59,y1:.17,x2:.62,y2:.12},
+    {x1:.22,y1:.30,x2:.22,y2:.32},
+    {x1:.38,y1:.41,x2:.44,y2:.28},
+    {x1:.55,y1:.41,x2:.55,y2:.28},
+    {x1:.80,y1:.40,x2:.80,y2:.53},
+    {x1:.44,y1:.70,x2:.39,y2:.70},
+    {x1:.22,y1:.50,x2:.22,y2:.53},
+  ];
+
+  function draw(){
+    const W=c.width, H=c.height;
+    ctx.clearRect(0,0,W,H);
+
+    // Grid
+    ctx.strokeStyle='rgba(0,120,180,.06)';
+    ctx.lineWidth=1;
+    const gs=Math.round(W/20);
+    for(let x=0;x<=W;x+=gs){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<=H;y+=gs){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+
+    // Blocks
+    BLOCKS.forEach(b=>{
+      const x=b.x*W, y=b.y*H, w=b.w*W, h=b.h*H;
+      if(b.accent){
+        ctx.fillStyle='rgba(0,60,100,.7)';
+        ctx.fillRect(x,y,w,h);
+        ctx.strokeStyle='rgba(0,200,255,.55)';
+        ctx.lineWidth=1.5;
+        // corner marks
+        const cs=8;
+        ctx.beginPath();
+        ctx.moveTo(x,y+cs);ctx.lineTo(x,y);ctx.lineTo(x+cs,y);
+        ctx.moveTo(x+w-cs,y);ctx.lineTo(x+w,y);ctx.lineTo(x+w,y+cs);
+        ctx.moveTo(x,y+h-cs);ctx.lineTo(x,y+h);ctx.lineTo(x+cs,y+h);
+        ctx.moveTo(x+w-cs,y+h);ctx.lineTo(x+w,y+h);ctx.lineTo(x+w,y+h-cs);
+        ctx.stroke();
+        ctx.strokeStyle='rgba(0,200,255,.2)';
+        ctx.lineWidth=1;
+        ctx.strokeRect(x,y,w,h);
+      } else {
+        ctx.fillStyle='rgba(0,30,55,.6)';
+        ctx.fillRect(x,y,w,h);
+        ctx.strokeStyle='rgba(0,160,220,.25)';
+        ctx.lineWidth=1;
+        ctx.strokeRect(x,y,w,h);
+      }
+      const fs=Math.max(7,Math.min(10,w/10));
+      ctx.font=`500 ${fs}px JetBrains Mono,monospace`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillStyle=b.accent?'rgba(0,230,255,.85)':'rgba(0,200,255,.55)';
+      ctx.fillText(b.label.length*fs*.6>w-8?b.label:b.label, x+w/2, y+h/2);
+    });
+
+    // Animated traces
+    TRACES.forEach((tr,i)=>{
+      const phase=(t*.025+i*.55)%(Math.PI*2);
+      const al=.25+.5*Math.abs(Math.sin(phase));
+      ctx.strokeStyle=`rgba(0,255,185,${al})`;
+      ctx.lineWidth=1.3;
+      ctx.beginPath();
+      ctx.moveTo(tr.x1*W,tr.y1*H);
+      ctx.lineTo(tr.x1*W,tr.y2*H);
+      ctx.lineTo(tr.x2*W,tr.y2*H);
+      ctx.stroke();
+      // traveling signal dot
+      const prog=(t*.022+i*.38)%1;
+      const px=tr.x1*W+(tr.x2*W-tr.x1*W)*prog;
+      const py=tr.y1*H+(tr.y2*H-tr.y1*H)*prog;
+      ctx.save();
+      ctx.shadowColor='#00ffbd'; ctx.shadowBlur=10;
+      ctx.fillStyle='#00ffbd';
+      ctx.beginPath(); ctx.arc(px,py,2.8,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    });
+
+    // Bond pads around the edge
+    const PADS=12;
+    for(let i=0;i<PADS;i++){
+      const x=W*(i+.5)/PADS, y=H*.01;
+      ctx.strokeStyle='rgba(0,200,255,.3)'; ctx.lineWidth=1;
+      ctx.strokeRect(x-5,y,10,8);
+      ctx.fillStyle='rgba(0,200,255,.1)'; ctx.fillRect(x-5,y,10,8);
+      const y2=H*.96;
+      ctx.strokeRect(x-5,y2,10,8); ctx.fillRect(x-5,y2,10,8);
+    }
+    for(let i=0;i<8;i++){
+      const y2=H*(i+.5)/8;
+      ctx.strokeRect(W*.01,y2-5,8,10); ctx.fillRect(W*.01,y2-5,8,10);
+      ctx.strokeRect(W*.93,y2-5,8,10); ctx.fillRect(W*.93,y2-5,8,10);
+    }
+
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ──────────────────────────────
+   SCROLL REVEAL
+────────────────────────────── */
+(function(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('v');
+        e.target.querySelectorAll('.sk-fill').forEach(b=>{
+          b.style.width=b.dataset.w+'%';
+        });
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.r,.r2,.r3').forEach(el=>io.observe(el));
+})();
+
+/* ──────────────────────────────
+   CONTACT FORM — WORKING
+────────────────────────────── */
+function sendMsg(){
+  const name = document.getElementById('f-name').value.trim();
+  const co   = document.getElementById('f-co').value.trim();
+  const email= document.getElementById('f-email').value.trim();
+  const msg  = document.getElementById('f-msg').value.trim();
+
+  const ok  = document.getElementById('msg-ok');
+  const err = document.getElementById('msg-err');
+  ok.style.display='none'; err.style.display='none';
+
+  if(!name || !msg){
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none', 4000);
+    return;
+  }
+
+  const subject = encodeURIComponent(
+    'Physical Design Opportunity' + (co ? ' — ' + co : '')
+  );
+  const replyLine = email ? `\nMy email: ${email}` : '';
+  const body = encodeURIComponent(
+    `Hi Nikith,\n\nMy name is ${name}${co?' from '+co:''}.${replyLine}\n\n${msg}\n\nBest regards,\n${name}`
+  );
+
+  window.location.href = `mailto:mssn2024@gmail.com?subject=${subject}&body=${body}`;
+
+  ok.style.display='block';
+  document.getElementById('f-name').value='';
+  document.getElementById('f-co').value='';
+  document.getElementById('f-email').value='';
+  document.getElementById('f-msg').value='';
+  setTimeout(()=>ok.style.display='none', 8000);
+}
+
+/* ──────────────────────────────
+   COPY EMAIL
+────────────────────────────── */
+function copyEmail(){
+  const email='mssn2024@gmail.com';
+  const conf=document.getElementById('copy-confirm');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(()=>{
+      conf.style.display='block';
+      setTimeout(()=>conf.style.display='none',3000);
+    });
+  } else {
+    // fallback
+    const ta=document.createElement('textarea');
+    ta.value=email; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    conf.style.display='block';
+    setTimeout(()=>conf.style.display='none',3000);
+  }
+}
+
+/* ──────────────────────────────
+   ENTER KEY SUPPORT FOR FORM
+────────────────────────────── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter' && e.ctrlKey) sendMsg();
+});
+</script>
+</body>
+</html>
